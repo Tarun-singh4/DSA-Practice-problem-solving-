@@ -21,5 +21,5 @@ int main(){
     vector<int> v={1,3,59,92,98,3};
     solution s;
     cout<<"largest element"<<" =" <<s.brute(v)<<endl;
-    cout<<"largest element"<<" ="<<s.optimal(v)<<endl;
+    cout<<"largest element"<<" ="<<s.optimal(v)<<"\n";
 }
