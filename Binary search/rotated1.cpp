@@ -26,6 +26,35 @@ int rotated(vector<int> &v,int target){
     }
     return -1;
 }
+
+
+//Search in rotated sorted array -2(duplicates  elements)
+int rotated(vector<int> &v,int target){
+    int n=v.size();
+    int low=0,high=n-1;
+    while(low<=high){
+        int mid=low+(high-low)/2;
+        if(v[mid]==target){
+            return mid;
+        }
+        if(v[low]==v[mid] && v[mid]==v[high]){
+            low++;high--;continue;                  //shrink the size
+        }
+        //left sorted array
+        else if(v[low]<=v[mid]){
+            if(v[low]<=target && target<=v[mid]){
+                high=mid-1;
+            }else low=mid+1;
+        }
+        //right sorted array
+        else{
+            if(v[mid]<=target && target<=v[high]){
+                low=mid+1;
+            }else high=mid-1;
+        }
+    }
+    return -1;
+}
 int main(){
     vector<int> v={6,7,8,9,10,1,2,3,4,5};
     int ans=rotated(v,2);
